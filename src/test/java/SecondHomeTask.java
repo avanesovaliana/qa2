@@ -16,7 +16,7 @@ public class SecondHomeTask {
     private final By ARTICLE_PAGE_TITLE = By.xpath(".//h1[contains(@class, 'd-inline')]");
     private final By ARTICLE_TITLE_COMMENT_ELEMENT = By.xpath("(.//a[contains(@class,'text-red-ribbon')])[1]");
     private final By ARTICLE_TITLE_COMMENT_PAGE = By.xpath("(.//h1[contains(@class, 'article-title')])[2]");
-    private final Logger LOGGER = LogManager.getLogger(MyTest.class);
+    private final Logger LOGGER = LogManager.getLogger(SecondHomeTask.class);
     private WebDriver driver;
 
     private final By MAIN_PAGE_COMMENT_COUNT = By.xpath(".//a[contains(@class, 'comment-count')]");
