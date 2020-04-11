@@ -14,7 +14,7 @@ import java.util.List;
 public class BaseFunc {
     private final String HOME_PAGE_URL = "rus.delfi.lv";
     private WebDriver driver;
-    private WebDriverWait wait;//sozdali na urovne klassa
+    private WebDriverWait wait;
     private final Logger LOGGER = LogManager.getLogger(BaseFunc.class);
 
     public BaseFunc(){  //sozdali konstruktor
@@ -23,10 +23,10 @@ public class BaseFunc {
         LOGGER.info("Opening browser");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, 10);//zhdem max 10 sek
+        wait = new WebDriverWait(driver, 10);
     }
 
-    public void goToUrl(String url){ //proverka ssilki
+    public void goToUrl(String url){
         if (!url.startsWith("http://") && !url.startsWith("https://")) {
             url = "http://" + url;
         }
@@ -36,7 +36,7 @@ public class BaseFunc {
     public void openHomePage(){
         goToUrl(HOME_PAGE_URL);
         LOGGER.info("Opening Delfi home page");
-   //     driver.get(HOME_PAGE_URL);
+
     }
 
     public List<WebElement> findElements(By locator){
@@ -49,7 +49,7 @@ public class BaseFunc {
     }
 
     public void click(WebElement webElement){
-        wait.until(ExpectedConditions.elementToBeClickable(webElement));//dozhidaetsja poka element budet klikabeljnim
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
 

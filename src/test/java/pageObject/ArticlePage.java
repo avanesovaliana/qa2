@@ -1,7 +1,5 @@
 package pageObject;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -11,10 +9,10 @@ public class ArticlePage {
     private final By TITLE = By.xpath(".//h1[contains(@class, 'd-inline')]");
     private final By ARTICLE_TITLE_COMMENT_ELEMENT = By.xpath("(.//a[contains(@class, 'text-red-ribbon' )])[1]");
     private final By ARTICLE_PAGE_COMMENT_COUNT = By.xpath(".//a[contains(@class, 'd-print-none')]");
+    private final By ARTICLES = By.tagName("article");
     private BaseFunc baseFunc;
-    private final Logger LOGGER = LogManager.getLogger(ArticlePage.class);
 
-    public ArticlePage(BaseFunc baseFunc) { //sozdali konstruktor
+    public ArticlePage(BaseFunc baseFunc) {
         this.baseFunc = baseFunc;
     }
 
@@ -25,5 +23,20 @@ public class ArticlePage {
     public void goToCommentPage(){
         WebElement articleTitleComment = baseFunc.findElement(ARTICLE_TITLE_COMMENT_ELEMENT);
         baseFunc.click(articleTitleComment);
+    }
+
+    public int getCommentCountArticlePage(){
+        List<WebElement> titles = baseFunc.findElements(ARTICLES);
+        int articleCommentCount;
+
+        if(baseFunc.findElement(ARTICLE_PAGE_COMMENT_COUNT).isEnabled()){
+
+            WebElement articleComment = baseFunc.findElement(ARTICLE_PAGE_COMMENT_COUNT);
+            String articleCommentText = articleComment.getText();
+            articleCommentCount = Integer.parseInt(articleCommentText.substring(1,articleCommentText.length()-1));
+        } else{
+            articleCommentCount = 0;
+        }
+        return articleCommentCount;
     }
 }

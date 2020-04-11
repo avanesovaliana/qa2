@@ -2,24 +2,23 @@ package pageObject;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
+
 
 public class TitleTests {
-    private BaseFunc baseFunc = new BaseFunc(); //sozdali kopiju objekta base func
+    private BaseFunc baseFunc = new BaseFunc();
     private final Logger LOGGER = LogManager.getLogger(TitleTests.class);
-    private final By ARTICLES = By.tagName("article");
+
 
     @Test
     public void titleCheck(){
         baseFunc.openHomePage();
 
-        HomePage homePage = new HomePage(baseFunc); //budem rabotatj s funkcionalom glavnoj stranici
-        String homePageTitle = homePage.getTitleById(2); //berem vtoruju statju
+        HomePage homePage = new HomePage(baseFunc);
+        String homePageTitle = homePage.getTitleById(2);
         LOGGER.info("Main page article text: " + homePageTitle);
-        homePage.goToArticleById(2);//perehodim na vtoruju statju
+        homePage.goToArticleById(2);
 
         ArticlePage articlePage = new ArticlePage(baseFunc);
         String articlePageTitle = articlePage.getTitle();
@@ -46,21 +45,25 @@ public class TitleTests {
         int homePageCommentCount = homePage.getCommentCount();
         LOGGER.info("Main page article text: " + homePageTitle);
         LOGGER.info(homePageCommentCount);
-        //homePage.goToArticleById(2);
+        homePage.goToArticleById(2);
 
-        /*ArticlePage articlePage = new ArticlePage(baseFunc);
-        String articlePageTitle = articlePage.getTitle();
-        LOGGER.info("Article page: " + articlePageTitle);
+        ArticlePage articlePage = new ArticlePage(baseFunc);
+        int articlePageCommentCount = articlePage.getCommentCountArticlePage();
+        LOGGER.info("Article comment count: " + articlePageCommentCount);
         articlePage.goToCommentPage();
 
         CommentPage commentPage = new CommentPage(baseFunc);
-        String anonimCommentCount = commentPage.getAnonimCommentCount();
+        int anonimCommentCount = commentPage.getAnonimCommentCount();
         LOGGER.info("Anonim comment count: " + anonimCommentCount);
 
-        String regCommentCount = commentPage.getRegCommentCount();
+        int regCommentCount = commentPage.getRegCommentCount();
         LOGGER.info("Reg comment count: " + regCommentCount);
 
-        LOGGER.info("Comment page total comment count: " + (regCommentCount + anonimCommentCount)); */
+        LOGGER.info("Comment page total comment count: " + (regCommentCount + anonimCommentCount));
 
+        Assertions.assertEquals(homePageCommentCount,articlePageCommentCount, "Wrong comment count on article page!");
+        Assertions.assertEquals(homePageCommentCount,anonimCommentCount+regCommentCount, "Wrong count on comment page!");
+
+        baseFunc.closeBrowser();
     }
 }
