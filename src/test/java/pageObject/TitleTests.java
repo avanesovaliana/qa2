@@ -54,10 +54,10 @@ public class TitleTests {
 
         CommentPage commentPage = new CommentPage(baseFunc);
         int anonimCommentCount = commentPage.getAnonimCommentCount();
-        LOGGER.info("Anonim comment count: " + anonimCommentCount);
+        LOGGER.info("Anonymous comment count: " + anonimCommentCount);
 
         int regCommentCount = commentPage.getRegCommentCount();
-        LOGGER.info("Reg comment count: " + regCommentCount);
+        LOGGER.info("Registration comment count: " + regCommentCount);
 
         LOGGER.info("Comment page total comment count: " + (regCommentCount + anonimCommentCount));
 
