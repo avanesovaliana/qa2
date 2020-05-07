@@ -2,13 +2,13 @@ package model;
 
 public class Clouds {
 
-    private int all;
+    private long all;
 
-    public int getAll() {
+    public long getAll() {
         return all;
     }
 
-    public void setAll(int all) {
+    public void setAll(long all) {
         this.all = all;
     }
 }

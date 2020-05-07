@@ -1,6 +1,7 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
@@ -9,16 +10,69 @@ import java.util.List;
 public class Response {
 
     private Coord coord;
+
+    @JsonProperty("weather")
+    private List<Weather> weathers;
+
     private Main main;
     private Wind wind;
+    private Clouds clouds;
+
+    public Clouds getClouds() {
+        return clouds;
+    }
+
+    public void setClouds(Clouds clouds) {
+        this.clouds = clouds;
+    }
+
     private Sys sys;
     private String base;
-    private int visibility;
-    private int dt;
-    private int id;
+    private Float visibility;
+    private Float dt;
+    private Long id;
     private String name;
-    private int cod;
-    private List<Weather> weather;
+    private Long cod;
+
+    public Coord getCoord() {
+        return coord;
+    }
+
+    public void setCoord(Coord coord) {
+        this.coord = coord;
+    }
+
+    public List<Weather> getWeathers() {
+        return weathers;
+    }
+
+    public void setWeathers(List<Weather> weathers) {
+        this.weathers = weathers;
+    }
+
+    public Main getMain() {
+        return main;
+    }
+
+    public void setMain(Main main) {
+        this.main = main;
+    }
+
+    public Wind getWind() {
+        return wind;
+    }
+
+    public void setWind(Wind wind) {
+        this.wind = wind;
+    }
+
+    public Sys getSys() {
+        return sys;
+    }
+
+    public void setSys(Sys sys) {
+        this.sys = sys;
+    }
 
     public String getBase() {
         return base;
@@ -28,27 +82,27 @@ public class Response {
         this.base = base;
     }
 
-    public int getVisibility() {
+    public Float getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(int visibility) {
+    public void setVisibility(Float visibility) {
         this.visibility = visibility;
     }
 
-    public int getDt() {
+    public Float getDt() {
         return dt;
     }
 
-    public void setDt(int dt) {
+    public void setDt(Float dt) {
         this.dt = dt;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -60,51 +114,11 @@ public class Response {
         this.name = name;
     }
 
-    public int getCod() {
+    public Long getCod() {
         return cod;
     }
 
-    public void setCod(int cod) {
+    public void setCod(Long cod) {
         this.cod = cod;
-    }
-
-    public Sys getSys() {
-        return sys;
-    }
-
-    public void setSys(Sys sys) {
-        this.sys = sys;
-    }
-
-    public Wind getWind() {
-        return wind;
-    }
-
-    public void setWind(Wind wind) {
-        this.wind = wind;
-    }
-
-    public Main getMain() {
-        return main;
-    }
-
-    public void setMain(Main main) {
-        this.main = main;
-    }
-
-    public Coord getCoord() {
-        return coord;
-    }
-
-    public void setCoord(Coord coord) {
-        this.coord = coord;
-    }
-
-    public List<Weather> getWeather() {
-        return weather;
-    }
-
-    public void setWeather(List<Weather> weather) {
-        this.weather = weather;
     }
 }
