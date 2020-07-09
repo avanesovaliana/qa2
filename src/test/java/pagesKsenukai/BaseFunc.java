@@ -68,7 +68,7 @@ public class BaseFunc {
     }
 
     public void waitForElements(By locator) {
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
